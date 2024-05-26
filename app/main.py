@@ -1,15 +1,18 @@
 import sys
 
-def exit(args = ""):
+def exit(args: str):
     if args[0] == "0":
         sys.exit(0)
     else:
         sys.stdout.write(f"Need proper arguments\n")
     
+def echo(args: str):
+    sys.stdout.write(f"{" ".join(args)}\n")
     
 def main():
     commands = {
-        "exit": exit
+        "exit": exit,
+        "echo": echo
     }
 
     while True:
