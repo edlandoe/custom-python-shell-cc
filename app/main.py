@@ -1,3 +1,4 @@
+from shell import Shell
 import sys, os
 
 def main():
