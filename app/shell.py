@@ -33,7 +33,7 @@ class Shell:
             sys.exit(int(args[0]))
         
     def echo(self, args: list[str]) -> None:
-        sys.stdout.write(f"{" ".join(args)}\n")
+        sys.stdout.write(f"{' '.join(args)}\n")
         sys.stdout.flush()
        
     def type(self, args: list[str]) -> None:
