@@ -6,7 +6,7 @@ class Shell:
         self.commands = {
         "exit": self.exit,
         "echo": self.echo,
-        "type": self.type
+        "type": self.type,
     }
     
     # Helper Functions        
@@ -47,6 +47,9 @@ class Shell:
             sys.stdout.write(f"{args[0]} not found\n")
             sys.stdout.flush()
             
+    def execute_path(self, path, args) -> None:
+        os.system(f"{path} {' '.join(args)}")
+            
 
 def main():
     shell = Shell()   
@@ -61,11 +64,13 @@ def main():
         if len(initial_input) > 1:
             args = initial_input[1:]
         
-        if command not in shell.get_commands():
-            sys.stdout.write(f"{command}: command not found\n") 
-            sys.stdout.flush()
-        else:
-           shell.run_command(command, args)
+        if command in shell.get_commands():
+            shell.run_command(command, args)
+        else: 
+            if os.path.exists(command):
+                shell.execute_path(command, args)
+            else: 
+                print(f"{command}: command not found")
 
 
 if __name__ == "__main__":
