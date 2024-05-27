@@ -6,7 +6,7 @@ class Shell:
         self.commands = {
         "exit": self.exit,
         "echo": self.echo,
-        "type": self.type,
+        "type": self.type
     }
     
     # Helper Functions        
